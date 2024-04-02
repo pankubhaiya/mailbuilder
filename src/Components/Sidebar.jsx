@@ -4,7 +4,7 @@ import { IoIosSend } from "react-icons/io";
 import { FaInbox } from "react-icons/fa";
 import logo1 from "../Images/Logo_1.png";
 import logoBlack from "../Images/Logo_black.png";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 
 const listItems = [
@@ -20,12 +20,22 @@ const listItems = [
 
 export const Sidebar = ({contentName, setContentName}) =>{
   const {colorMode, toggleColorMode} = useColorMode();
-  
-  const handleContentName = (name) =>{
+  const [selectedMenuItem, setSelectedMenuItem] = useState(() => {
+    return parseInt(sessionStorage.getItem("selectedMenuItem")) || 0;
+  });
+
+  const handleMenuItemClick = useCallback((index) => {
+    console.log(index);
+    setSelectedMenuItem(index);
+    sessionStorage.setItem("selectedMenuItem", index);
+  }, []);
+  const handleContentName = useCallback((index,name) => {
+    
     setContentName(name);
-    
-    
-  }
+    console.log(index,name);
+    setSelectedMenuItem(index);
+    sessionStorage.setItem("selectedMenuItem", index);
+  }, []);
 
     return (
         <Flex 
@@ -76,16 +86,28 @@ export const Sidebar = ({contentName, setContentName}) =>{
               {
                 listItems.map((item, i) => (
                   <Box key={i}>
-                      <Icon 
-                      w="28px"
-                      h="28px" 
-                      as={item.icon}
-                      onClick={()=>handleContentName(item.name)}
-                      color={(colorMode=='light') ? '#919EAB' : '#AEAEAE'}
-                      cursor='pointer'
-                      />
-                  </Box>    
-                  
+                  <Icon 
+                    w="28px"
+                    h="28px"
+                    p="2px" 
+                    as={item.icon}
+                    onClick={() => handleContentName(i, item.name)}
+                    color={(colorMode === 'light') ? '#919EAB' : '#AEAEAE'}
+                    cursor='pointer'
+                    _hover={{
+                      backgroundColor: '#2F3030',
+                      color: '#FFFFFF',
+                      borderRadius: '6px'
+                    }}
+                    selectedMenuItem={{
+                      backgroundColor: '#2F3030',
+                      fontWeight: 'bold',
+                      color: '#FFFFFF',
+                      borderRadius: '6px'
+                    }}
+                    // p={i === selectedMenuItem ? 4 : 0}
+                  />
+                </Box>
                      
                 ))
               }
