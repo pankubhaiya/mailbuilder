@@ -61,11 +61,12 @@ const Delete = ({threadId}) => {
       <Text className="pera" fontSize="15px" fontWeight="400" color="#e8e8e8" mt="30px">
         Your selected email will be deleted
       </Text>
-      <Flex mt="16px" justify="center">
+      <Flex mt="36px" gap="20px" justify="center">
         <Button
           className="cancel"
-          borderRadius="4px 0px 0px 0px"
+          borderRadius="4pxx"
           bg="#25262b"
+          p="25px"
           color="#ffffff"
           onClick={deleteBox}
         >
@@ -73,10 +74,11 @@ const Delete = ({threadId}) => {
         </Button>
         <Button
           className="delete"
-          borderRadius="4px 0px 0px 0px"
+          borderRadius="4px"
           bgGradient="linear(to-r, #FA5252, #A91919)"
           color="#ffffff"
           ml="10px"
+          p="25px"
           onClick={handleDelete}
         >
           Delete
