@@ -60,7 +60,7 @@ export const Login = () => {
             >
               <FcGoogle />
               <Link
-                href='https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https://github.com/pankubhaiya/mailbuilder'
+                href='https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https://mailbuilder-xi.vercel.app/onebox'
                  // href='https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https://660a86720a8a027fe5cbf108--enchanting-snickerdoodle-a8f1d4.netlify.app//onebox'
        
               >
