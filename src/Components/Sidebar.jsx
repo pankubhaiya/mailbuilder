@@ -92,6 +92,13 @@ export const Sidebar = ({contentName, setContentName}) =>{
                     p="2px" 
                     as={item.icon}
                     onClick={() => handleContentName(i, item.name)}
+                    style={selectedMenuItem === i ? {
+                      backgroundColor: '#2F3030',
+                      fontWeight: 'bold',
+                      color: '#FFFFFF',
+                      borderRadius: '6px'
+                    } : {}}
+                   
                     color={(colorMode === 'light') ? '#919EAB' : '#AEAEAE'}
                     cursor='pointer'
                     _hover={{
@@ -99,13 +106,7 @@ export const Sidebar = ({contentName, setContentName}) =>{
                       color: '#FFFFFF',
                       borderRadius: '6px'
                     }}
-                    selectedMenuItem={{
-                      backgroundColor: '#2F3030',
-                      fontWeight: 'bold',
-                      color: '#FFFFFF',
-                      borderRadius: '6px'
-                    }}
-                    // p={i === selectedMenuItem ? 4 : 0}
+                
                   />
                 </Box>
                      
