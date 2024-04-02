@@ -59,10 +59,11 @@ export const Onebox = ()=> {
     // Set the token in the component's state
     if (tokenFromUrl) {
       setToken(tokenFromUrl);
+      localStorage.setItem('token', token);
     }
   }, []); 
- const Navigate = useNavigate()
-  localStorage.setItem('token', token);
+//  const Navigate = useNavigate()
+
 
   useEffect(()=>{
     // reset data
