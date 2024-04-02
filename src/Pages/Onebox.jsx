@@ -6,6 +6,7 @@ import { Content } from '../Components/Content';
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useEmailContext } from '../Components/ContestApi';
+import { Navigate, useNavigate } from 'react-router-dom/dist';
 
 // const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2hhaGFuZXByaXlhbmthczAxQGdtYWlsLmNvbSIsImlkIjo5LCJmaXJzdE5hbWUiOiJQcml5YW5rYSIsImxhc3ROYW1lIjoiU2hhaGFuZSJ9LCJpYXQiOjE3MTEzODYwMzUsImV4cCI6MTc0MjkyMjAzNX0.aawIHorCsYmq5bCQViAo7oEmEvwBHl_LhBq-Hh3sYGc`
 
@@ -48,13 +49,29 @@ export const Onebox = ()=> {
   const [data, setData] = useState(null);
   const [contentName, setContentName] = useState('Home');
   const location = useLocation();
-  const token = new URLSearchParams(location.search).get('token') || 
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoic2hhaGFuZXByaXlhbmthczAxQGdtYWlsLmNvbSIsImlkIjo5LCJmaXJzdE5hbWUiOiJQcml5YW5rYSIsImxhc3ROYW1lIjoiU2hhaGFuZSJ9LCJpYXQiOjE3MTE1MTA3NDEsImV4cCI6MTc0MzA0Njc0MX0.y9LmDEUdIipLhK-jvH2uFdnaQCfXQ1FbDgxmElWTuzU";
-
+  const token = new URLSearchParams(location.search).get('token') 
+ const Navigate = useNavigate()
   localStorage.setItem('token', token);
-
+  
   useEffect(()=>{
     // reset data
+    
+    if(token){
+
+      fetchData(token).then(res=>{
+        setData(res.data.data);
+        console.log(res.data);
+      }).catch(err=>{
+        console.log(err);
+      });
+    }else{
+      Navigate("/")
+    }
+
+  },[token]);
+  useEffect(()=>{
+    // reset data
+    
     if(token){
 
       fetchData(token).then(res=>{
