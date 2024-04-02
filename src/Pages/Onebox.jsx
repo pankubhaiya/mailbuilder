@@ -49,26 +49,21 @@ export const Onebox = ()=> {
   const [data, setData] = useState(null);
   const [contentName, setContentName] = useState('Home');
   const location = useLocation();
-  const token = new URLSearchParams(location.search).get('token') 
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    // Parse the URL to extract the token
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenFromUrl = urlParams.get("token");
+
+    // Set the token in the component's state
+    if (tokenFromUrl) {
+      setToken(tokenFromUrl);
+    }
+  }, []); 
  const Navigate = useNavigate()
   localStorage.setItem('token', token);
-  
-  useEffect(()=>{
-    // reset data
-    
-    if(token){
 
-      fetchData(token).then(res=>{
-        setData(res.data.data);
-        console.log(res.data);
-      }).catch(err=>{
-        console.log(err);
-      });
-    }else{
-      Navigate("/")
-    }
-
-  },[token]);
   useEffect(()=>{
     // reset data
     
