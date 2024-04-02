@@ -22,11 +22,29 @@ export const EmailProvider = ({ children }) => {
   const [token, setToken] = useState("");
   const navigat = useNavigate()
   console.log(name, email);
-//   const tokenFromStorage =
-//     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiamFpbmtyaXNoYW5rdW1hcjZAZ21haWwuY29tIiwiaWQiOjM3LCJmaXJzdE5hbWUiOiJrcmlzaGFuIGt1bWFyIiwibGFzdE5hbWUiOiJqYWluIn0sImlhdCI6MTcxMTg5MjIzOCwiZXhwIjoxNzQzNDI4MjM4fQ.CRrjJA6x9AaL6kUoV1rVeGUW93x6uNe0SNm4TAUDoOk";
+  // const tokenFromStorage =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiamFpbmtyaXNoYW5rdW1hcjZAZ21haWwuY29tIiwiaWQiOjM3LCJmaXJzdE5hbWUiOiJrcmlzaGFuIGt1bWFyIiwibGFzdE5hbWUiOiJqYWluIn0sImlhdCI6MTcxMTg5MjIzOCwiZXhwIjoxNzQzNDI4MjM4fQ.CRrjJA6x9AaL6kUoV1rVeGUW93x6uNe0SNm4TAUDoOk";
 
-  
+  // useEffect(() => {
+  //   // const tokenFromStorage = localStorage.getItem("token");
 
+  //   // If the token exists in local storage, set it in the component's state
+  //   if (tokenFromStorage) {
+  //     setToken(tokenFromStorage);
+  //     navigat("/onebox");
+  //   }
+  //   else{
+  //     navigat("/")
+  //   }
+  // }, []);
+  const urlParams =new URLSearchParams(window.location.search);
+  const tokenFromUrl = urlParams.get("token");
+
+  // Set the token in the component's state
+  if (tokenFromUrl) {
+    // setToken(tokenFromUrl);
+    localStorage.setItem('token', tokenFromUrl);
+  }
 
 
   const [isMessageBoxOpen, setIsMessageBoxOpen] = useState(false);

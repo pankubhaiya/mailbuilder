@@ -64,7 +64,7 @@ export const AboutEmail = () =>{
         console.log(thread_id)
         
         try{
-            let res = await axios.get(`https://hiring.reachinbox.xyz/api/v1/onebox/messages/${thread_id} || ${575}`,{
+            let res = await axios.get(`https://hiring.reachinbox.xyz/api/v1/onebox/messages/${thread_id}`,{
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                     "Content-Type": 'application/json'
