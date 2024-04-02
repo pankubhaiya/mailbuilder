@@ -152,7 +152,6 @@ import {
           <PopoverContent
            top= "260px"
            left="372px"
-            
             ml="15px"
             w="55vw"
             h="60vh"
@@ -302,7 +301,7 @@ import {
                 >
                   Preview Emails
                 </Button>
-                <Flex gap="16px" alignItems="center">
+                <Flex gap="16px" paddingTop="22px" alignItems="center">
                   {svgList.map((item, i) => (
                     <Image
                       key={i}
