@@ -13,10 +13,11 @@ export const Content = ({data, contentName}) =>{
     return (
         <Box>
              
-            {(contentName == 'Mail')?<Flex>
+            {(contentName == 'Mail')?<Flex minHeight="1vh">
                 <Inbox emails = {data} />
                 <Box
                 w="60%" 
+                minHeight="0%"
                 bgColor={colorMode=="light" ?"White":"black"}
                 >
                   <AboutEmail  />

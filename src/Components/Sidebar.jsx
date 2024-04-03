@@ -71,11 +71,11 @@ export const Sidebar = ({contentName, setContentName}) =>{
 
           <Box
           w="48px"
-          h="85vh"
+          h="65vh"
           >
             <Flex
             w="48px"
-            h="85vh"
+            h="65vh"
             direction="column"
             justifyContent="center"
             alignItems="center"
